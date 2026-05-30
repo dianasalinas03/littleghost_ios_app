@@ -7,27 +7,27 @@
 import Foundation
 import SwiftUI
 
-// 1. Estructura para los botones de interacción en las pistas
+// estructura para los botones de interacción en las pistas
 struct BotonInteraccion: Identifiable {
     let id = UUID()
     let mensaje: String
     let conectaConPista: String
 }
 
-// 2. Modelo principal para tus 5 Vinilos (Pistas)
+// 2. Modelo principal for the vinyls (Pistas)
 struct Vinilo: Identifiable {
-    let id: String              // Ej: "debut", "fearless", "red"
-    let nombreAlbum: String     // Ej: "Fearless Era"
-    let nombreReino: String     // Ej: "Countryside Realm"
-    let pistaTexto: String      // El acertijo que dice GA Star
-    let interactuable: Bool     // Si activa dinámicas especiales
-    var encontrado: Bool = false // Control del inventario
+    let id: String              // debut, fearless, red
+    let nombreAlbum: String     // fearless era
+    let nombreReino: String     //  countryside realm
+    let pistaTexto: String      // GA star bestie help
+    let interactuable: Bool     // special dinmamcics
+    var encontrado: Bool = false // control de inventario
 }
 
 // 3. Estructura para el Chat con GA Star
 struct MensajeChat: Identifiable {
     let id = UUID()
-    let remitente: String       // "Usuario", "GA Star" o "K.W.B"
+    let remitente: String       // user, star or bear
     let texto: String
-    let esAlerta: Bool          // Para poner textos en rojo si aparece el oso
+    let esAlerta: Bool          // red bear 
 }

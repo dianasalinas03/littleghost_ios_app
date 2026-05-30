@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct JuegoPrincipalView: View {
-    // Conectamos con el estado global que creamos en el Paso 2
+    // conectar con estado global
     @ObservedObject var estado: EstadoJuego
     
     var body: some View {
         ZStack {
-            // 1. FONDO: El visor de la cámara con los efectos de las Eras
+            // fondou
             CamaraSimuladaView(estado: estado)
                 .ignoresSafeArea()
             
-            // 2. AGENTE: GA Star flotando en la esquina superior derecha
+            // GA star on the corner
             VStack {
                 HStack {
                     Spacer()
@@ -28,12 +28,12 @@ struct JuegoPrincipalView: View {
                 Spacer()
             }
             
-            // 3. INTERFAZ DE USUARIO (Botones flotantes estéticos)
+            // INTERFAZ DE USUARIO
             VStack {
                 Spacer()
                 
                 HStack(spacing: 40) {
-                    // Botón para ir al Chat (Pantalla 3)
+                    // boton para ir al chat
                     NavigationLink(destination: ChatView(estado: estado)) {
                         VStack {
                             Image(systemName: "bubble.left.and.exclamationmark.bubble.right.fill")
@@ -47,7 +47,7 @@ struct JuegoPrincipalView: View {
                         .foregroundColor(.white)
                     }
                     
-                    // Botón para ir a la Colección/Inventario (Pantalla 4)
+                    // Boton para ir a la colecion/inventario
                     NavigationLink(destination: InventarioView(estado: estado)) {
                         VStack {
                             Image(systemName: "opticaldisc.fill")
@@ -64,7 +64,7 @@ struct JuegoPrincipalView: View {
                 .padding(.bottom, 50)
             }
         }
-        // Ocultamos la barra de navegación estándar para que se vea más como un juego
+        
         .navigationBarBackButtonHidden(true)
     }
 }

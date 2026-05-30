@@ -14,14 +14,14 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // 70s Pop Style Pastel Background
+              
                 Color(red: 0.96, green: 0.91, blue: 0.93)
                     .ignoresSafeArea()
                 
                 VStack(spacing: 24) {
                     Spacer()
                     
-                    // 1. Main Avatar (Little Ghost Placeholder)
+                    // Little Ghost Placeholder
                     VStack(spacing: 8) {
                         Text("👻")
                             .font(.system(size: 85))
@@ -37,7 +37,7 @@ struct ContentView: View {
                     VStack(spacing: 12) {
                         Text("Mission: Lost Rhythm")
                             .font(.headline)
-                            .foregroundColor(.yellow) // Cambiado de .orange a .yellow 💛
+                            .foregroundColor(.yellow)
                         
                         Text("The evil Bear K.W.B has stolen the legendary vinyls and hidden them in mysterious realms inside your own room. With the help of GA Star, follow the clues and restore the music!")
                             .font(.subheadline)
@@ -62,7 +62,7 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 32)
                         .padding(.vertical, 16)
-                        // Cambiado de .cyan a un tono oscuro retro que combina con el título 🎨
+                      
                         .background(Color(red: 0.2, green: 0.2, blue: 0.3).gradient)
                         .cornerRadius(30)
                         .shadow(color: Color(red: 0.2, green: 0.2, blue: 0.3).opacity(0.4), radius: 10, y: 5)
@@ -110,7 +110,7 @@ struct PantallaVictoriaView: View {
                     .padding(.horizontal, 32)
                 
                 Button(action: {
-                    // Reset the game in case the professor wants to try it again
+                    // Reset the game 
                     for i in 0..<estado.listaVinilos.count {
                         estado.listaVinilos[i].encontrado = false
                     }

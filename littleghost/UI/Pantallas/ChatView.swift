@@ -10,11 +10,11 @@ import SwiftUI
 struct ChatView: View {
     @ObservedObject var estado: EstadoJuego
     @State private var textoMensaje: String = ""
-    @Environment(\.dismiss) var dismiss // Permite cerrar esta pantalla y volver a la cámara
+    @Environment(\.dismiss) var dismiss //  close screen - return to camera
     
     var body: some View {
         VStack {
-            // 1. Cabecera Personalizada
+            // header
             HStack {
                 Button(action: { dismiss() }) {
                     HStack {
@@ -28,12 +28,12 @@ struct ChatView: View {
                     .font(.headline)
                     .foregroundColor(.white)
                 Spacer()
-                Text("Return AR").opacity(0).disabled(true) // Centrador óptico
+                Text("Return AR").opacity(0).disabled(true) // optic thingy
             }
             .padding()
             .background(Color.black.opacity(0.5))
             
-            // 2. Historial de burbujas de conversación
+            // conversation bubbles
             ScrollView {
                 VStack(alignment: .leading, spacing: 14) {
                     ForEach(estado.mensajesChat) { mensaje in
@@ -65,7 +65,7 @@ struct ChatView: View {
                 .padding()
             }
             
-            // 3. Campo de texto inferior para escribir
+            // chat
             HStack {
                 TextField("type 'clue' to get some help from GA Star...", text: $textoMensaje)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -74,7 +74,7 @@ struct ChatView: View {
                 Button(action: {
                     guard !textoMensaje.isEmpty else { return }
                     estado.enviarMensajeUsuario(textoMensaje)
-                    textoMensaje = "" // Limpia el renglón al enviar
+                    textoMensaje = "" //  clean
                 }) {
                     Image(systemName: "paperplane.fill")
                         .font(.title3)

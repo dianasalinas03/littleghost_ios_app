@@ -9,16 +9,16 @@ import SwiftUI
 import AVFoundation
 
 struct CamaraSimuladaView: View {
-    // Conexión al estado global
+
     @ObservedObject var estado: EstadoJuego
     
     var body: some View {
         ZStack {
-            // 1. NUEVO FONDO: El lente de la cámara real en vivo del iPhone
+         
             CamaraEnVivoView()
                 .ignoresSafeArea()
             
-            // Degradado sutil para que los botones sigan siendo legibles
+   
             LinearGradient(
                 colors: [obtenerColorAmbiente().opacity(0.25), .black.opacity(0.4)],
                 startPoint: .top,
@@ -26,13 +26,13 @@ struct CamaraSimuladaView: View {
             )
             .ignoresSafeArea()
             
-            // 2. Retícula de enfoque estilo Cámara Pro/AR
+            // reticula
             ViewfinderBorders()
                 .stroke(obtenerColorAmbiente(), lineWidth: 2)
                 .frame(width: 260, height: 260)
                 .opacity(0.7)
             
-            // 3. CAPA DE EFECTO ESPECIAL: Filtro Morado (Speak Now Era)
+            // speak nowwwww
             if estado.filtroMoradoActivo {
                 Color.purple.opacity(0.35)
                     .ignoresSafeArea()
@@ -47,14 +47,14 @@ struct CamaraSimuladaView: View {
                     .offset(y: -100)
             }
             
-            // 4. CAPA DE EFECTO ESPECIAL: Confeti y Notas Flotantes (1989 Era)
+            // (1989 Era)
             if estado.mostrarConfeti {
                 Text("🎉 🎵 ⭐ 🎶 🎉 🎵")
                     .font(.system(size: 30))
                     .offset(y: -140)
             }
             
-            // 5. ENFRENTAMIENTO CON EL OSO (Red Era)
+            // (Red Era x kwb)
             if estado.mostrarOsoEnojado {
                 VStack(spacing: 12) {
                     Text("🐻")
@@ -87,7 +87,7 @@ struct CamaraSimuladaView: View {
                 .transition(.scale)
             }
             
-            // 6. Letrero Superior de Geolocalización Interactiva
+            //  Geolocalizacion Interactiva
             VStack {
                 Text(estado.ubicacionActualSimulada)
                     .font(.subheadline)
@@ -146,7 +146,7 @@ struct CamaraSimuladaView: View {
     }
 }
 
-// --- COMPONENTE INTERNO: ACCESO AL HARDWARE DE LA CÁMARA TRASERA ---
+// COMPONENTE INTERNO: ACCESO AL HARDWARE DE LA CAMARA TRASERA
 struct CamaraEnVivoView: UIViewRepresentable {
     func makeUIView(context: Context) -> UIView {
         let view = UIView(frame: UIScreen.main.bounds)
@@ -178,7 +178,7 @@ struct CamaraEnVivoView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: Context) {}
 }
 
-// Dibujo de las esquinas de la cámara
+// Dibujo de las esquinas de la camara
 struct ViewfinderBorders: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()

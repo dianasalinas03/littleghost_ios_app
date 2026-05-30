@@ -13,7 +13,7 @@ struct InventarioView: View {
     
     var body: some View {
         VStack {
-            // 1. Cabecera Personalizada
+            // header
             HStack {
                 Button(action: { dismiss() }) {
                     HStack {
@@ -32,12 +32,12 @@ struct InventarioView: View {
             .padding()
             .background(Color.black.opacity(0.5))
             
-            // 2. Lista scrolleable de los Vinilos
+            // vinyl list
             ScrollView {
                 VStack(spacing: 16) {
                     ForEach(estado.listaVinilos) { vinilo in
                         HStack(spacing: 16) {
-                            // Icono del disco musical reflectivo
+                            // vinyl icon
                             ZStack {
                                 Circle()
                                     .fill(vinilo.encontrado ? Color.yellow.gradient : Color.gray.gradient)
@@ -48,7 +48,7 @@ struct InventarioView: View {
                                     .foregroundColor(.black)
                             }
                             
-                            // Textos informativos de las Eras de T.S.
+                            //  Eras de T.S.
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(vinilo.nombreAlbum)
                                     .font(.headline)
@@ -61,7 +61,7 @@ struct InventarioView: View {
                             
                             Spacer()
                             
-                            // Badge indicador de estado de la misión
+                            // Badge indicador de estado de la mision
                             Text(vinilo.encontrado ? "✅ Founded" : "🔒 Lost")
                                 .font(.caption2)
                                 .fontWeight(.bold)
@@ -84,7 +84,7 @@ struct InventarioView: View {
                 .padding()
             }
             
-            // 3. Barra de estatus general de la entrega
+            // Barra de estatus general de la entrega
             HStack {
                 Spacer()
                 Text("Progress: \(estado.listaVinilos.filter({$0.encontrado}).count) of 5 secured vinyls")
